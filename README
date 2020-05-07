@@ -1,0 +1,13 @@
+# Dotfile
+
+```
+$ git clone https://github.com/GonzalezAndrew/dotfiles && cd dotfiles
+# install bash 
+$ ./brew-install.sh 
+
+# Remove README && brew install script
+$ rm READM && rm brew-install.sh
+
+# link dotfiles 
+$ stow -vt ~ *
+```
