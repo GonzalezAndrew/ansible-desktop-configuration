@@ -10,4 +10,9 @@ $ rm READM && rm brew-install.sh
 
 # link dotfiles 
 $ stow -vt ~ *
+
+# run to enable power10k
+$ 'builtin' 'source' "${POWERLEVEL9K_INSTALLATION_DIR:-${${(%):-%x}:A:h}}/powerlevel10k.zsh-theme"
+
+
 ```
