@@ -2,7 +2,7 @@
 
 ```
 $ git clone https://github.com/GonzalezAndrew/dotfiles && cd dotfiles
-# install bash 
+# install xcode-select, brew, etc 
 $ ./brew-install.sh 
 
 # Remove README && brew install script
