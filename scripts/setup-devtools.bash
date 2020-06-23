@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Thank you: https://github.com/jthegedus/dotfiles/tree/master/scripts
 
 set -eo pipefail
 
