@@ -1,0 +1,7 @@
+python latest
+shellcheck latest
+terraform latest
+vault latest
+packer latest 
+go latest
+jq latest 
