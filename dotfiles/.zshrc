@@ -1,6 +1,4 @@
 #!/bin/bash
-# shellcheck disable=SC2034
-
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -65,10 +63,6 @@ HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
-
-printf "✅  %s\\n" "Source asdf completions prior to oh-my-zsh running it's own compinit."
-# shellcheck disable=SC2206
-fpath=($HOME/.asdf/completions $fpath)
 
 plugins=(
     aws
