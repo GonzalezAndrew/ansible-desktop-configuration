@@ -1,36 +1,90 @@
+#!/bin/bash
+# shellcheck disable=SC2034
 
-unset LSCOLORS
-export CLICOLOR=1
-export CLICOLOR_FORCE=1
+# If you come from bash you might have to change your $PATH.
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Don't require escaping globbing characters in zsh.
-unsetopt nomatch
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
 
-# Nicer prompt.
-export PS1=$'\n'"%F{green} %*%F %3~ %F{white}$ "
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="robbyrussell"
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS=true
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+printf "✅  %s\\n" "Source asdf completions prior to oh-my-zsh running it's own compinit."
+# shellcheck disable=SC2206
+fpath=($HOME/.asdf/completions $fpath)
 
 plugins=(
     aws
     zsh-autosuggestions
+    git
+    go
+    python
+    pip
+    docker
 )
 
-# Bash-style time output.
-export TIMEFMT=$'\nreal\t%*E\nuser\t%*U\nsys\t%*S'
-
-# Allow history search via up/down keys.
-source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
-bindkey "^[[A" history-substring-search-up
-bindkey "^[[B" history-substring-search-down
-
-
-# Completions.
-autoload -Uz compinit && compinit
-
-# Case insensitive.
-zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
-
-
-export PATH="/usr/local/bin:$PATH"
+if [[ -n $SSH_CONNECTION ]]; then
+    export EDITOR='code'
+else
+    export EDITOR='nano'
+fi
 
 if [ -f $VIRTUAL_ENV/bin/aws_completer ]; then
     complete -C '$VIRTUAL_ENV/bin/aws_completer' aws
@@ -59,8 +113,8 @@ if [ -f ~/.profile ]; then
 fi
 
 # source global settings
-if [ -f "$HOME/.bash_aliases" ] ; then
-  source "$HOME/.bash_aliases"
+if [ -f "$HOME/.bash_aliases" ]; then
+    source "$HOME/.bash_aliases"
 fi
 
 # Source the functions directory
@@ -72,7 +126,9 @@ fi
 
 # Source Mac specific settings
 if [[ "$OSTYPE" == "darwin"* ]]; then
-	if [ -f "$HOME/.mac_aliases" ] ; then
-		"$HOME/.mac_aliases"
-	fi
+    if [ -f "$HOME/.mac_aliases" ]; then
+        "$HOME/.mac_aliases"
+    fi
 fi
+
+eval "$(starship init zsh)"

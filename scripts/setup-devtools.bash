@@ -102,7 +102,7 @@ else
 fi
 
 log_info "Installing Python packages"
-pip install -r "$(dirname "$(dirname "$0")")/config/requirements.txt"
+pip3 install -r "$(dirname "$(dirname "$0")")/config/requirements.txt"
 
 log_success "Successfully installed Extras"
 
