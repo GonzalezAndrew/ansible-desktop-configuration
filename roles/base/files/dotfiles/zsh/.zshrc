@@ -4,7 +4,6 @@
 #   @author Andrew Gonzalez
 #
 #
-
 export PATH=$HOME/bin:/usr/local/bin:/home/andy/.local/bin:$PATH
 export GOPATH=$HOME/go 
 export PATH=$PATH:/usr/local/go/bin
@@ -19,21 +18,7 @@ ZSH_THEME="robbyrussell"
 HYPHEN_INSENSITIVE="true"
 HIST_STAMPS="mm/dd/yyyy"
 
-plugins=(
-    zsh-autosuggestions
-)
-
-# completions
-autoload bashcompinit
-bashcompinit
-autoload -Uz compinit && compinit
-
-# set default editor 
-if [[ -n $SSH_CONNECTION ]]; then
-    export EDITOR='code'
-else
-    export EDITOR='nano'
-fi
+plugins=(git)
 
 # source aws complete
 if [ -f $VIRTUAL_ENV/bin/aws_completer ]; then
@@ -49,15 +34,6 @@ if [ -f /home/linuxbrew/.linuxbrew/bin/virtualenvwrapper.sh ]; then
     source /home/linuxbrew/.linuxbrew/bin/virtualenvwrapper.sh
 fi
 
-# source aws vault settings
-export AWS_VAULT_BACKEND="file"
-if [[ -n $AWS_VAULT ]]; then
-    export PS1="\[\e[38;5;82m\](aws-vault: $AWS_VAULT)\n\[\e[0m\]$PS1"
-    if [[ -n $VIRTUAL_ENV ]]; then
-        workon $(basename $VIRTUAL_ENV)
-    fi
-fi
-
 # source global settings
 if [ -f "$HOME/.bash_aliases" ]; then
     source "$HOME/.bash_aliases"
@@ -70,5 +46,6 @@ if [ -d ~/.functions ]; then
     done
 fi
 
-eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval "$(starship init zsh)"
+source ~/.zsh/aliases.zsh
+source ~/.zsh/prompt.zsh
+source ~/.zsh/completion.zsh

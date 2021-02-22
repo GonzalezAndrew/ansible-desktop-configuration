@@ -1,0 +1,18 @@
+---
+- name: install utility packages
+  package:
+    state: latest
+    name:
+      - curl
+      - htop
+      - lsof
+      - neofetch
+      - tmux
+      - wget
+      - zsh
+      - whois
+      - rsync
+      - apt-transport-https
+      - ca-certificates
+      - gnupg-agent
+      - software-properties-common

@@ -1,0 +1,11 @@
+---
+- name: install pip packages
+  become_user: andy
+  pip:
+    executable: /usr/bin/pip3
+    state: latest
+    name:
+      - bpytop
+      - awscli
+      - docker
+      - virtualenvwrapper

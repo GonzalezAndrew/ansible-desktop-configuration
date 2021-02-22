@@ -1,0 +1,12 @@
+---
+- name: remove unneeded packages
+  package:
+    state: absent
+    name:
+      - cowsay
+      - exim4
+      - exim4-base
+      - exim4-config
+      - nano
+      - firefox
+  when: ansible_distribution is ["Pop!_OS", "Debian", "Ubuntu"]

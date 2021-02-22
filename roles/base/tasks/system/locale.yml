@@ -1,0 +1,20 @@
+- name: add en_US
+  locale_gen:
+    name: en_US.UTF-8
+    state: present
+
+- name: set locale to en_US
+  locale_gen:
+    name: en_US.UTF-8
+    state: present
+  register: locale
+
+- name: set en_US as default locale
+  command: localectl set-locale LANG=en_US.UTF-8
+  when: locale.changed
+
+- name: remove en_GB
+  locale_gen:
+    name: en_GB.UTF-8
+    state: absent
+  when: locale.changed
