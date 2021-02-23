@@ -33,5 +33,6 @@ if [ -d ~/.functions ]; then
 fi
 
 source ~/.zsh/aliases.zsh
-source ~/.zsh/prompt.zsh
 source ~/.zsh/completion.zsh
+
+eval "$(starship init zsh)"

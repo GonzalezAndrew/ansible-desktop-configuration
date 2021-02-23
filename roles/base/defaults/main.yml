@@ -1,3 +1,7 @@
 ---
 user: "andy"
 group: "andy"
+
+starship_version: 0.50.0
+starship_release_url: "https://github.com/starship/starship/releases/download/v{{ starship_version }}/starship-x86_64-unknown-linux-gnu.tar.gz"
+starship_path: /usr/local/bin/

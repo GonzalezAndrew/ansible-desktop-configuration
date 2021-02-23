@@ -21,11 +21,11 @@ install_ansible() {
 case "$(uname -s)" in
     Darwin)
         mac
-        echo "Ready to run the dry-check. $ ansible-playbook -i inventories/mac playbook.yml --dry-check"
+        echo "Ready to run the dry-check. $ ansible-playbook -i inventories/mac playbook.yml --check"
         ;;
     Linux)
         linux
-        echo "Ready to run the dry-check. $ ansible-playbook -i inventories/popos playbook.yml --dry-check"
+        echo "Ready to run the dry-check. $ ansible-playbook -i inventories/popos playbook.yml --check"
         ;;
     *)
         exit

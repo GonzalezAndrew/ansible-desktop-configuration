@@ -1,0 +1,178 @@
+# disable starship from forcing a new line to be taken. 
+add_newline = false
+
+[line_break]
+disabled = true 
+
+[character]
+use_symbol_for_status = true
+symbol = "  [➟](bold green)" 
+error_symbol = "[✖](bold red) "
+
+[cmd_duration]
+min_time = 10_000  # Show command duration over 10,000 milliseconds (=10 sec)
+format = " took [$duration]($style)"
+
+[directory]
+truncation_length = 5
+truncate_to_repo = true
+prefix = " 📂️ "
+style = "bold italic #87A752"
+
+[git_branch]
+format = " [$symbol$branch]($style) "
+symbol = "🍣 "
+style = "bold yellow"
+
+[git_commit]
+commit_hash_length = 8
+style = "bold white"
+
+[git_state]
+progress_divider = " of "
+
+[git_status]
+conflicted = "⚔️ "
+ahead = "🏎️ 💨 ×${count}"
+behind = "🐢 ×${count}"
+diverged = "🔱 🏎️ 💨 ×${ahead_count} 🐢 ×${behind_count}"
+untracked = "🛤️  ×${count}"
+stashed = "📦 "
+modified = "📝 ×${count}"
+staged = "🗃️  ×${count}"
+renamed = "📛 ×${count}"
+deleted = "🗑️  ×${count}"
+style = "bright-white"
+format = "$all_status$ahead_behind"
+
+[memory_usage]
+format = "$symbol[${ram}( | ${swap})]($style) "
+show_percentage = true
+show_swap = true
+threshold = 70
+style = "bold dimmed white"
+disabled = false
+
+[python]
+symbol = "🐍 "
+format = "[$symbol$version]($style) "
+style = "bold green"
+
+[time]
+time_format = "%T"
+format = "🕙 $time($style) "
+style = "bright-white"
+disabled = false
+
+[terraform]
+format = "[🏎💨 $version]($style) "
+
+[golang]
+format = "via [🐹 $version](bold cyan) "
+
+##### ALL DISABLED CONFIGURATIONS
+[zig]
+disabled = true
+
+[vagrant]
+disabled = true
+
+[rust]
+format = "[$symbol$version]($style) "
+style = "bold green"
+disable = true
+
+[username]
+style_user = "bold dimmed blue"
+show_always = false
+disabled = true
+
+[swift]
+disabled = true
+
+[singularity]
+disabled = true
+
+[shlvl]
+disabled = true
+
+[julia]
+format = "[$symbol$version]($style) "
+symbol = "ஃ "
+style = "bold green"
+disabled = true
+
+[ruby]
+disabled = true
+
+[purescript]
+disabled = true
+
+[php]
+disabled = true
+
+[perl]
+disabled = true
+
+[openstack]
+disabled = true
+
+[ocaml]
+disabled = true
+
+[nodejs]
+disabled = true
+
+[nix_shell]
+disabled = true
+
+[nim]
+disabled = true
+
+[hg_branch]
+disabled = true
+
+[lua]
+disabled = true
+
+[kubernetes]
+disabled = true
+
+[kotlin]
+disabled = true
+
+[jobs]
+disabled = true
+
+[java]
+disabled = true
+
+[helm]
+disabled = true
+
+[package]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[erlang]
+disabled = true
+
+[elm]
+disabled = true
+
+[elixir]
+disabled = true
+
+[dotnet]
+disabled = true
+
+[dart]
+disabled = true
+
+[crystal]
+disabled = true
+
+[conda]
+disabled = true

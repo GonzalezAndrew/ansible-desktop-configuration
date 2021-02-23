@@ -14,3 +14,27 @@
       - wget
       - unzip
       - curl
+
+- name: install starship
+  unarchive:
+    src: "{{ starship_release_url }}"
+    dest: "{{ starship_path }}"
+    remote_src: true
+    owner: "{{ user }}"
+    group: "{{ group }}"
+    mode: 0755
+
+- name: install oh-my-zsh
+  git:
+    repo: https://github.com/robbyrussell/oh-my-zsh
+    dest: "{{ user_home }}/.oh-my-zsh"
+    force: yes
+
+- name: get zsh path
+  command: which zsh
+  register: zsh_path
+
+- name: switch to zsh
+  user:
+    name: "{{ user }}"
+    shell: "{{ zsh_path.stdout }}"

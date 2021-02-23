@@ -60,7 +60,6 @@
   with_items:
     - { src: 'aliases.zsh' }
     - { src: 'completion.zsh' }
-    - { src: 'prompt.zsh' }
 
 - name: copy wallpapers over
   copy:
