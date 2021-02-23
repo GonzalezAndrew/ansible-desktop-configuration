@@ -3,16 +3,14 @@
   package:
     state: latest
     name:
-      - curl
       - htop
       - lsof
       - neofetch
-      - tmux
-      - wget
       - zsh
-      - whois
-      - rsync
-      - apt-transport-https
-      - ca-certificates
-      - gnupg-agent
-      - software-properties-common
+      - htop
+      - vim
+      - tmux
+      - jq
+      - wget
+      - unzip
+      - curl

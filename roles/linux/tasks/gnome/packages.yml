@@ -1,0 +1,15 @@
+---
+- name: install gnome packages
+  package:
+    name:
+      - gnome-tweaks
+      - nautilus
+      - gnome-todo
+      - gnome-system-monitor
+    state: latest
+
+- name: enable and start gdm
+  service:
+    name: gdm
+    enabled: true
+    state: started

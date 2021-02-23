@@ -1,0 +1,13 @@
+---
+- src: gonzalezandrew.ansible_role_docker
+  name: docker 
+
+- src: gonzalezandrew.terraform
+  name: terraform 
+
+- src: gonzalezandrew.packer
+  name: packer
+  version: v0.0.6
+
+- src: drew-kun.nerdfonts
+  name: nerdfonts

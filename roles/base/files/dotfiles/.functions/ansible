@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+function ansible_facts() {
+    if [[ ! "$1" ]]; then
+        echo "No hostname was specified, using localhost"
+        ansible -m setup localhost
+    fi 
+    ansible -m setup "$1"
+}

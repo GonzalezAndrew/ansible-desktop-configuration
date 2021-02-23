@@ -7,6 +7,6 @@ function denter() {
      return 0
  fi
 
- docker exec -it $1 bash
+ docker exec -it "$1" bash
  return 0
 }

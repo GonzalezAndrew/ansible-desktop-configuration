@@ -2,10 +2,8 @@
 - name: install development packages
   package:
     name:
-      - git
       - python3
       - python3-pip
-      - python3-flake8
       - python3-virtualenv
       - golang
     state: latest

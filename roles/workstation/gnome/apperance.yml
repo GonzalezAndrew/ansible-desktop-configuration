@@ -1,8 +1,0 @@
----
-- name: copy wallpapers over
-  copy:
-    src:
-    dest:
-    owner: root
-    group: root
-    mode: 0644

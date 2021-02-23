@@ -1,0 +1,8 @@
+---
+- name: install vscode
+  become_user: "{{ user }}"
+  flatpak:
+    name: com.visualstudio.code
+    method: user
+    state: present
+  when: vscode is defined and vscode == true

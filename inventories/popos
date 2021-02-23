@@ -1,0 +1,2 @@
+[popos]
+localhost ansible_connection=local

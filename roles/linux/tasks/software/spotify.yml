@@ -1,0 +1,8 @@
+---
+- name: install spotify
+  become_user: "{{ user }}"
+  flatpak:
+    name: com.spotify.Client
+    method: user
+    state: present
+  when: spotify is defined and spotify == true

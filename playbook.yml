@@ -1,0 +1,52 @@
+---
+- hosts: all
+  become: true
+  pre_tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: true
+      changed_when: false
+      when: ansible_os_family == "Debian"
+
+  tasks:
+    - import_role:
+        name: base
+
+- hosts: popos
+  become: true
+  roles:
+    - linux
+
+- hosts: mac
+  become: true
+  roles:
+    - mac
+
+- hosts: all
+  become: true
+  vars: 
+    - docker_compose_version: 1.28.4
+    - docker_apt_gpg_key: https://download.docker.com/linux/ubuntu/gpg
+    - docker_apt_repository: "deb [arch=amd64] https://download.docker.com/linux/ubuntu groovy stabe"
+    - terraform_version: 0.14.7
+    - packer_version: 1.7.0
+  roles:
+    - docker
+    - terraform
+    - packer
+    - nerdfonts
+
+- hosts: all
+  become: true
+  tasks:
+  - name: cleanup package cache
+    apt:
+      autoclean: yes
+    changed_when: false
+    when: ansible_distribution in ["Debian", "Pop!_OS", "Ubuntu"]
+
+  - name: autoremove orphan packages
+    apt:
+      autoremove: yes
+      purge: yes
+    when: ansible_distribution in ["Debian", "Pop!_OS", "Ubuntu"]

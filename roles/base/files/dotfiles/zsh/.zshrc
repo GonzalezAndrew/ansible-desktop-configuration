@@ -20,20 +20,6 @@ HIST_STAMPS="mm/dd/yyyy"
 
 plugins=(git)
 
-# source aws complete
-if [ -f $VIRTUAL_ENV/bin/aws_completer ]; then
-    complete -C '$VIRTUAL_ENV/bin/aws_completer' aws
-fi
-
-# source virtualenvwrapper
-if [ -f /home/linuxbrew/.linuxbrew/bin/virtualenvwrapper.sh ]; then
-    export VIRTUALENVWRAPPER_PYTHON=$(which python3)
-    export VIRTUALENV_PYTHON=$(which python3)
-    export PIP_REQUIRE_VIRTUALENV=true
-    export WORKON_HOME=~/.virtualenvs
-    source /home/linuxbrew/.linuxbrew/bin/virtualenvwrapper.sh
-fi
-
 # source global settings
 if [ -f "$HOME/.bash_aliases" ]; then
     source "$HOME/.bash_aliases"

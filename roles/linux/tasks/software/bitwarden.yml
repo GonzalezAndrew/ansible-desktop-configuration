@@ -1,0 +1,8 @@
+---
+- name: install bitwarden
+  become_user: "{{ user }}"
+  flatpak:
+    name: flathub com.bitwarden.desktop
+    method: user
+    state: present
+  when: bitwarden is defined and bitwarden == true

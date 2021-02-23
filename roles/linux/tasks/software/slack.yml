@@ -1,0 +1,8 @@
+---
+- name: install slack
+  become_user: "{{ user }}"
+  flatpak:
+    name: com.slack.Slack
+    method: user
+    state: present
+  when: slack is defined and slack == true

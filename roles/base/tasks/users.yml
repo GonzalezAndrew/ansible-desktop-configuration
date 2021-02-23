@@ -9,18 +9,18 @@
 
 - name: create .ssh directory
   file:
-    path: /home/andy/.ssh
+    path: "{{ user_home }}/.ssh"
     state: directory
-    owner: andy
-    group: andy
+    owner: "{{ user }}"
+    group: "{{ group }}"
     mode: 0700
 
 - name: create config directories
   file:
-    path: /home/andy/{{ item.dir }}
+    path: "{{ user_home }}/{{ item.dir }}"
     state: directory
-    owner: andy
-    group: andy
+    owner: "{{ user }}"
+    group: "{{ group }}"
     mode: 0700
   with_items:
     - { dir: '.config'}
@@ -28,35 +28,34 @@
     - { dir: '.config/nvim/autoload'}
     - { dir: '.config/nvim/plug-config' }
     - { dir: '.config/nvim/vim-plug' }
-    - { dir: '.config/alacritty' }
     - { dir: '.functions' }
     - { dir: '.tmux' }
     - { dir: '.tmux/config' }
-    - { dir: '.tmux/ftplugin' }
     - { dir: '.zsh' }
     - { dir: 'Pictures/wallpapers'}
 
 - name: copy dotfiles
   copy:
     src: dotfiles/{{ item.src }}
-    dest: /home/andy/{{ item.dest }}
-    owner: andy
-    group: andy
+    dest: "{{ user_home }}/{{ item.dest }}"
+    owner: "{{ user }}"
+    group: "{{ group }}"
     mode: 0700
   with_items:
-    - { src: 'dotfiles/.functions/docker', dest: '.functions/docker' }
-    - { src: 'dotfiles/.functions/git', dest: '.functions/git' }
-    - { src: 'dotfiles/.bash_aliases', dest: '.bash_aliases' }
-    - { src: 'dotfiles/.gitconfig', dest: '.gitconfig' }
-    - { src: 'dotfiles/.gitignore', dest: '.gitignore' }
-    - { src: 'dotfiles/.zshrc', dest: '.zshrc' }
+    - { src: '.functions/docker', dest: '.functions/docker' }
+    - { src: '.functions/git', dest: '.functions/git' }
+    - { src: '.functions/ansible', dest: '.functions/ansible' }
+    - { src: '.bash_aliases', dest: '.bash_aliases' }
+    - { src: '.gitconfig', dest: '.gitconfig' }
+    - { src: '.gitignore', dest: '.gitignore' }
+    - { src: 'zsh/.zshrc', dest: '.zshrc' }
 
 - name: copy zsh files
   copy:
     src: dotfiles/zsh/{{ item.src }}
-    dest: /home/andy/.zsh/{{ item.src }}
-    owner: andy
-    group: andy
+    dest: "{{ user_home }}/.zsh/{{ item.src }}"
+    owner: "{{ user }}"
+    group: "{{ group }}"
     mode: 0700
   with_items:
     - { src: 'aliases.zsh' }
@@ -66,5 +65,7 @@
 - name: copy wallpapers over
   copy:
     src: "{{ item }}"
-    dest: /home/andy/Pictures/wallpapers/
+    dest: "{{ user_home }}/Pictures/wallpapers/"
+    owner: "{{ user }}"
+    group: "{{ group }}"
   with_fileglob: "wallpapers/*"

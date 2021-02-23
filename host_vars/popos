@@ -1,0 +1,11 @@
+---
+ansible_python_interpreter: /usr/bin/python3
+
+bitwarden: true
+discord: false
+google_chrome: false
+lutris: false
+slack: false
+spotify: true
+vscode: false
+zoom: false

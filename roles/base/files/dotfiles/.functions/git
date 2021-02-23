@@ -25,3 +25,39 @@ function gsync() {
  git pull upstream "$1" && \
  git push origin "$1"
 }
+
+function gitgood() {
+  cd ~/GitHub || exit 1
+  RED=$(tput setaf 1)
+  GREEN="\033[0;32m"
+  RESET=$(tput sgr0)
+  for git_repo in $(ls -1 -d */*);
+  do
+  BRANCH=$(git --git-dir=./$git_repo/.git --work-tree=./$git_repo branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/*\(.*\)/\1/')
+  printf "%-40s %-10s %-4s" "$git_repo" "$BRANCH"
+  if [ ! -z "$(git --git-dir=./$git_repo/.git --work-tree=./$git_repo status --short)" ]; then
+      printf " ${RED}✗"
+    else
+      printf " ${GREEN}✔"
+    fi
+  printf "\n${RESET}"
+  done
+  cd - >>/dev/null
+}
+
+function gtag() {
+  tag_version="$1"
+  tag_message="$2"
+
+  if [[ ! "$1" ]]; then
+    tag_version="v.0.0.1"
+    echo "Using the default tag version: $tag_version"
+  fi
+
+  if [[ ! "$2" ]]; then 
+    tag_message="This is a tag."
+    echo "Using the default tag message: $tag_message"
+  fi
+
+  git tag -a "$tag_version" "$tag_message" && git push origin main --tags
+}
