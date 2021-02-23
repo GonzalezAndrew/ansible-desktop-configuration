@@ -40,3 +40,7 @@ $ ansible-playbook -i inventories/popos playbook.yml
 - [ ] Make `base` role more robust in installing dotfiles. 
 - [ ] Add `vscode` plugin & setting configuration.
 - [ ] Add `oh-my-zsh` installation and configuration.
+- [ ] Add `startship` configuration.
+- [ ] Configure golang environment.
+- [ ] Add neovim installation and configuration.
+- [ ] DBeaver installation.
